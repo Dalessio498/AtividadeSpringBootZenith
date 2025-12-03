@@ -1,0 +1,40 @@
+Criar banco
+CREATE DATABASE IF NOT EXISTS academia;
+
+USE academia;
+
+ Tabela de usuários
+CREATE TABLE IF NOT EXISTS usuario (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    username VARCHAR(50) NOT NULL,
+    password VARCHAR(50) NOT NULL,
+    cargo VARCHAR(20) NOT NULL,
+    PRIMARY KEY (id)
+);
+
+-- Inserir usuários de exemplo
+INSERT INTO usuario (username, password, cargo) VALUES ('funcionario1', '1234', 'FUNCIONARIO');
+INSERT INTO usuario (username, password, cargo) VALUES ('admin1', 'admin123', 'ADMIN');
+
+ Tabela de alunos atualizada
+CREATE TABLE IF NOT EXISTS aluno (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100),
+    idade INT,
+    cpf VARCHAR(20) NOT NULL UNIQUE,
+    endereco VARCHAR(200),
+    telefone VARCHAR(20),
+    plano VARCHAR(20),
+    precoPlano DECIMAL(10,2),
+    formaPagamento VARCHAR(50),
+    PRIMARY KEY (id)
+);
+
+-- Inserir alguns alunos de exemplo
+INSERT INTO aluno (nome, email, idade, cpf, endereco, telefone, plano, precoPlano, formaPagamento) VALUES
+('João Silva', 'joao@email.com', 25, '123.456.789-00', 'Rua A, 123', '(11) 99999-0000', 'Base', 99.90, 'Cartão'),
+('Maria Souza', 'maria@email.com', 30, '987.654.321-00', 'Rua B, 456', '(21) 98888-1111', 'Premium', 149.90, 'Dinheiro'),
+('Carlos Pereira', 'carlos@email.com', 28, '111.222.333-44', 'Rua C, 789', '(31) 97777-2222', 'Black', 199.90, 'Pix');
+
+select * from aluno

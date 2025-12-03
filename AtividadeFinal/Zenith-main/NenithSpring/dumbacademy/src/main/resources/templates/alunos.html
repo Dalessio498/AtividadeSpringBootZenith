@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Zenith - Alunos</title>
+    <link rel="stylesheet" href="/Zenith-main/NenithSpring/dumbacademy/src/main/resources/CSS/zenith.css">
+
+    <style>
+        * {
+    box-sizing: border-box;
+    transition: 0.3s ease;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont;
+    background-color: #202020;
+    color: #154b81;
+    padding: 50px 200px 100px 200px;
+}
+
+.pai {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border: 4px solid #154b81;
+    border-radius: 13px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.LogoZenith {
+    justify-self: center;
+    align-self: center;
+    width: 300px;
+}
+
+.image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 0 40px 0;
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-around;
+    align-items: center;
+    width: 90%;
+    gap: 40px;
+    padding: 30px;
+}
+
+form div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 250px;
+}
+
+#controles {
+    display: flex;
+    flex-direction: row;
+    margin: 40px 0 40px 0;
+    gap: 70px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#controles button {
+    padding: 10px;
+    width: 120px;
+    height: 50px;
+    background-color: #20202000;
+    border-color: #154b81e1;
+    border-radius: 10px;
+    color: #154b81;
+    font-weight: bold;
+}
+
+#controles button:hover {
+    cursor: pointer;
+    background-color: #154b81e1;
+    color: #ffffff;
+    scale: 1.05;
+}
+
+#controles button:focus {
+    cursor: pointer;
+    background-color: #154b81e1;
+    color: #ffffff;
+    scale: 1.05;
+}
+
+#controles img {
+    width: 60px;
+}
+
+form div input, form div select {
+    padding: 10px;
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+    background-color: #20202000;
+    border-color: #ffffff47;
+    color: #ffffff;
+}
+
+form div input:focus, form div select:focus {
+    scale: 1.02;
+    box-shadow: 0 4px 6px #154b81;
+}
+
+form div input:hover, form div select:hover {
+    scale: 1.02;
+    box-shadow: 0 4px 6px #154b81;
+    cursor: pointer;
+}
+
+.container hr {
+    width: 90%;
+    border-color: #154b81;
+    border: 2px solid #154b81;
+    border-radius: 13px;
+    margin: 40px 0 10px 0;
+}
+
+.container h2 {
+    font-size: 50px;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 1px 15px #154b81;
+}
+
+form label {
+    font-weight: bold;
+    font-size: 17px;
+}
+
+table {
+    border: 2px solid #154b81;
+    border-radius: 10px;
+}
+
+th {
+    padding: 20px;
+}
+
+
+
+
+        .container {
+
+            padding: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        form button {
+            padding: 10px;
+            width: 120px;
+            height: 50px;
+            background-color: #20202000;
+            border-color: #154b81e1;
+            border-radius: 10px;
+            color: #154b81;
+            font-weight: bold;
+        }
+
+        button:hover {
+            cursor: pointer;
+            background-color: #154b81e1;
+            color: #ffffff;
+            scale: 1.05;
+        }
+
+        button:focus {
+            cursor: pointer;
+            background-color: #154b81e1;
+            color: #ffffff;
+            scale: 1.05;
+        }
+
+        form input {
+            padding: 10px;
+            border-radius: 10px;
+            width: 30%;
+            height: 100%;
+            background-color: #20202000;
+            border-color: #ffffff47;
+            color: #ffffff;
+        }
+
+        form input:focus {
+            scale: 1.02;
+            box-shadow: 0 4px 6px #154b81;
+        }
+
+        form input:hover {
+            scale: 1.02;
+            box-shadow: 0 4px 6px #154b81;
+            cursor: pointer;
+        }
+
+        .BuscarCpf {
+            display: flex;
+            flex-direction: row;
+            gap: 30px;
+        }
+
+        .AdicionarAluno {
+            display: flex;
+            flex-direction: row;
+            padding: 10px;
+            width: 120px;
+            height: 50px;
+            background-color: #20202000;
+            border-color: #154b81e1;
+            border-radius: 10px;
+            color: #154b81;
+            font-weight: bold;
+            text-align: center;
+            font-size: 11px;
+        }
+
+        .AdicionarAluno:hover {
+            border: 2px solid #154b81;
+            cursor: pointer;
+            background-color: #154b81;
+            color: #ffffff47;
+        }
+
+        .AdicionarAluno:hover img {
+            filter: invert(100);
+        }
+
+        .btn-editar img, .btn-deletar img {
+            width: 40px;
+        }
+
+        .btn-editar img:hover, .btn-deletar img:hover {
+            scale: 1.1;
+            cursor: pointer;
+        }
+
+        .AdicionarAluno img {
+            width: 50%;
+            margin: 0;
+        }
+
+        table {
+            margin: 20px 0 0 0;
+            color: #ffffff47;
+            align-items:center;
+        }
+
+        a {
+        text-decoration: none;
+        }
+
+        td {
+        padding: 20px;
+
+
+
+    </style>
+</head>
+
+<body>
+
+
+<div class="container">
+    <img src="/images/LOGODEF.png" alt="">
+    <h2>Zenith - Lista de Alunos</h2>
+
+    <form method="get" th:action="@{/alunos}">
+        <label>Buscar por CPF:</label>
+        <input type="text" name="cpf" />
+        <div class="BuscarCpf">
+            <button type="submit">Buscar</button>
+    </form>
+
+    <a th:href="@{/alunos/novo}"><div class="AdicionarAluno">
+        <img src="/images/AdicionarZenith.png" alt="">
+        Adicionar Aluno
+    </div></a>
+</div>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Idade</th>
+        <th>CPF</th>
+        <th>Endereço</th>
+        <th>Telefone</th>
+        <th>Plano</th>
+        <th>Preço</th>
+        <th>Pagamento</th>
+        <th>Ações</th>
+    </tr>
+
+    <tr th:each="aluno : ${alunos}">
+        <td th:text="${aluno.id}"></td>
+        <td th:text="${aluno.nome}"></td>
+        <td th:text="${aluno.email}"></td>
+        <td th:text="${aluno.idade}"></td>
+        <td th:text="${aluno.cpf}"></td>
+        <td th:text="${aluno.endereco}"></td>
+        <td th:text="${aluno.telefone}"></td>
+        <td th:text="${aluno.plano}"></td>
+        <td th:text="${aluno.precoPlano}"></td>
+        <td th:text="${aluno.formaPagamento}"></td>
+
+        <td>
+            <a th:href="@{/alunos/editar/{id}(id=${aluno.id})}" class="btn-editar"><img src="/images/LapisEditarZenith.png"></a>
+
+            <a th:href="@{/alunos/deletar/{id}(id=${aluno.id})}" class="btn-deletar"
+               onclick="return confirm('Tem certeza que deseja excluir este aluno?');">
+                <img src="/images/ExcluirZenith.png">
+            </a>
+        </td>
+    </tr>
+</table>
+</div>
+</body>
+
+</html>
